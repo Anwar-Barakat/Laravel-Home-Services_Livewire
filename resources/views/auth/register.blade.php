@@ -44,6 +44,15 @@
                                 </div>
 
                                 <div class="form-group row">
+                                    <label for="phone" class="col-md-4 col-form-label text-md-right">
+                                        Phone Number</label>
+                                    <div class="col-md-6">
+                                        <input id="phone" type="tel" class="form-control" name="phone"
+                                            value="{{ old('phone') }}" required="">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
                                     <label for="password" class="col-md-4 col-form-label text-md-right">Password</label>
                                     <div class="col-md-6">
                                         <input id="password" type="password" class="form-control" name="password"
@@ -58,6 +67,18 @@
                                             name="password_confirmation" required autocomplete="new-password">
                                     </div>
                                 </div>
+                                <div class="form-group row">
+                                    <label for="uType" class="col-md-4 col-form-label text-md-right">Register
+                                        As</label>
+                                    <div class="col-md-6">
+                                        <select name="uType" id="uType" class="form-control custom-select">
+                                            <option value="" selected>Select..</option>
+                                            <option value="customer">Customer</option>
+                                            <option value="service_provider">Service Provider</option>
+                                        </select>
+                                    </div>
+                                </div>
+
                                 <div class="form-group row mb-0">
                                     <div class="col-md-10">
                                         <span style="font-size: 14px;">If you have already registered <a
