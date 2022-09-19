@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Livewire\Admin\AdminDashboardComponent;
+use App\Http\Livewire\Admin\ServiceCategoryComponent;
 use App\Http\Livewire\Customer\CustomerDashboardComponent;
 use App\Http\Livewire\HomeComponent;
 use App\Http\Livewire\ServiceCategoriesComponent;
@@ -24,7 +25,8 @@ Route::get('service-categories',                ServiceCategoriesComponent::clas
 
 
 Route::middleware(['auth:sanctum', 'verified', 'isAdmin'])->group(function () {
-    Route::get('/admin/adshboard',              AdminDashboardComponent::class)->name('admin.dashboard');
+    Route::get('/admin/adshboard',                     AdminDashboardComponent::class)->name('admin.dashboard');
+    Route::get('/admin/service-categories',            ServiceCategoryComponent::class)->name('admin.service.categories');
 });
 
 Route::middleware(['auth:sanctum', 'verified', 'isServiceProvider'])->group(function () {
