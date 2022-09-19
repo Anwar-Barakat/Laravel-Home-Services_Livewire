@@ -53,6 +53,7 @@
                                 src="https://i.postimg.cc/QCyRWB1P/IMG-20220826-172957-743-removebg-preview.png"
                                 alt="IMG-20220826-172957-743-removebg-preview" /></a>
                     </li>
+                    <li><a href="{{ route('service.categories') }}">Service Categories</a></li>
                     <li> <a href="javascript:void(0);">Air Conditioners</a>
                         <ul class="drop-down one-column hover-fade">
                             <li><a href="service-details/ac-wet-servicing.html">Wet Servicing</a></li>
