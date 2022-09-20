@@ -11,7 +11,6 @@
 <script type="text/javascript" src={{ asset('assets/js/flickr/jflickrfeed.min.js') }}></script>
 <script type="text/javascript" src={{ asset('assets/js/theme-options/theme-options.js') }}></script>
 <script type="text/javascript" src={{ asset('assets/js/theme-options/jquery.cookies.js') }}></script>
-<script type="text/javascript" src={{ asset('assets/js/bootstrap/bootstrap.min.js') }}></script>
 <script type="text/javascript" src={{ asset('assets/js/bootstrap/bootstrap-slider.js') }}></script>
 <script type="text/javascript" src={{ asset('assets/js/dtb/jquery.dataTables.min.js') }}></script>
 <script type="text/javascript" src={{ asset('assets/js/dtb/jquery.table2excel.js') }}></script>
@@ -35,3 +34,5 @@
         });
     });
 </script>
+
+@yield('js')

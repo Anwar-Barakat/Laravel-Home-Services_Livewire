@@ -11,7 +11,7 @@ class ServiceCategoryComponent extends Component
     use WithPagination;
     public function render()
     {
-        $serviceCategories  = ServiceCategory::latest()->paginate(10);
-        return view('livewire.admin.service-category-component', ['serviceCategories' => $serviceCategories])->layout('layouts.master');;
+        $serviceCategories  = ServiceCategory::latest()->get();
+        return view('livewire.admin.service-category-component', ['serviceCategories' => $serviceCategories])->layout('layouts.master');
     }
 }

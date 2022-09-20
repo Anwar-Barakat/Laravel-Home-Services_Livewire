@@ -9,3 +9,5 @@
 <script type="text/javascript" src="{{ asset('assets/js/jquery-ui.1.10.4.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('assets/js/toastr.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('assets/js/modernizr.js') }}"></script>
+
+<link rel="stylesheet" href="{{ asset('assets/css/custom/custom.css') }}">
