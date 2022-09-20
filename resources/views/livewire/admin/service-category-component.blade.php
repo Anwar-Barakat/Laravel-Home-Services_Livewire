@@ -35,12 +35,13 @@
                                     </div>
                                 </div>
                                 <div class="panel-body">
-                                    <table id="categories" class="table table-responsive table-striped dataTables_info">
+                                    <table id="categories" class="table  table-striped">
                                         <thead>
                                             <td>#</td>
                                             <td>image</td>
                                             <td>name</td>
                                             <td>slug</td>
+                                            <td>Actions</td>
                                         </thead>
                                         <tbody>
                                             @foreach ($serviceCategories as $serviceCategory)
@@ -50,6 +51,12 @@
                                                             alt=""></td>
                                                     <td>{{ $serviceCategory->name }}</td>
                                                     <td>{{ $serviceCategory->slug }}</td>
+                                                    <td>
+                                                        <a
+                                                            href="{{ route('admin.edit.service.categories', $serviceCategory->id) }}">
+                                                            <i class="fas fa-edit fa-2x text-success"></i>
+                                                        </a>
+                                                    </td>
                                                 </tr>
                                             @endforeach
                                         </tbody>

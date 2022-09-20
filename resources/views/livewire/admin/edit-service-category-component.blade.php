@@ -3,12 +3,12 @@
         <div class="bg_parallax image_02_parallax"></div>
         <div class="opacy_bg_02">
             <div class="container">
-                <h1>Add Service Category</h1>
+                <h1>Edit Service Category</h1>
                 <div class="crumbs">
                     <ul>
                         <li><a href="{{ route('home') }}">Home</a></li>
                         <li>/</li>
-                        <li>Add Service Category</li>
+                        <li>Edit Service Category</li>
                     </ul>
                 </div>
             </div>
@@ -24,7 +24,7 @@
                                 <div class="panel-heading">
                                     <div class="row" style="display: flex;align-items: center">
                                         <div class="col-md-6">
-                                            Add New Service Category
+                                            Edit The Service Category
                                         </div>
                                         <div class="col-md-6">
                                             <a href="{{ route('admin.service.categories') }}"
@@ -33,12 +33,15 @@
                                     </div>
                                 </div>
                                 <div class="panel-body">
-                                    <form class="form-horizontal" wire:submit.prevent="createNewCategory">
-                                        @if ($image)
-                                            <img src="{{ $image->temporaryUrl() }}" alt=""
+                                    <form class="form-horizontal" wire:submit.prevent="updateServiceCategory">
+                                        @if ($newImage)
+                                            <img src="{{ $newImage->temporaryUrl() }}" alt=""
                                                 class="img img-thumbnail m-auto mb-3 d-block" width="100">
-                                            <br>
+                                        @else
+                                            <img src="{{ asset('images/categories/' . $image) }}" alt=""
+                                                class="img img-thumbnail m-auto mb-3 d-block" width="100">
                                         @endif
+                                        <br>
                                         <div class="form-group">
 
                                             <label for="name" class="control-label col-sm-3">Category
@@ -67,10 +70,10 @@
                                             <div class="col-sm-9">
                                                 <div class="custom-file">
                                                     <input type="file" class="custom-file-input" id="customFile"
-                                                        wire:model="image">
+                                                        wire:model="newImage">
                                                     <label class="custom-file-label" for="customFile">Choose
                                                         file</label>
-                                                    @error('image')
+                                                    @error('newImage')
                                                         <span class="error">{{ $message }}</span>
                                                     @enderror
                                                 </div>
@@ -81,7 +84,7 @@
                                             <label for="name" class="control-label col-sm-3">&nbsp;</label>
                                             <div class="col-sm-9">
                                                 <button class="btn btn-success" type="submit"><i
-                                                        class="fab fa-plus"></i> Add</button>
+                                                        class="fas fa-edit"></i> Update </button>
                                             </div>
                                         </div>
                                     </form>
