@@ -51,10 +51,15 @@
                                                             alt=""></td>
                                                     <td>{{ $serviceCategory->name }}</td>
                                                     <td>{{ $serviceCategory->slug }}</td>
-                                                    <td>
+                                                    <td style="display: flex;justify-content: space-evenly;">
                                                         <a
                                                             href="{{ route('admin.edit.service.categories', $serviceCategory->id) }}">
                                                             <i class="fas fa-edit fa-2x text-success"></i>
+                                                        </a>
+                                                        <a href="#"
+                                                            wire:click.prevent="deleteServiceCategory({{ $serviceCategory->id }})"
+                                                            onclick="confirm('Are You Sure, You Want to Delete This Service Category') || event.stopImmediatePropagation()">
+                                                            <i class="fas fa-trash-alt fa-2x text-danger"></i>
                                                         </a>
                                                     </td>
                                                 </tr>
