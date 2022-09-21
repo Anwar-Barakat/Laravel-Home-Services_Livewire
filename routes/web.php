@@ -6,6 +6,7 @@ use App\Http\Livewire\Admin\EditServiceCategoryComponent;
 use App\Http\Livewire\Admin\ServiceCategoryComponent;
 use App\Http\Livewire\Customer\CustomerDashboardComponent;
 use App\Http\Livewire\HomeComponent;
+use App\Http\Livewire\ServiceByCategoryComponent;
 use App\Http\Livewire\ServiceCategoriesComponent;
 use App\Http\Livewire\ServiceProvider\ServiceProviderDashboardComponent;
 use Illuminate\Support\Facades\Route;
@@ -23,7 +24,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', HomeComponent::class)->name('home');
 
-Route::get('service-categories',                ServiceCategoriesComponent::class)->name('service.categories');
+Route::get('service-categories',                        ServiceCategoriesComponent::class)->name('service.categories');
+Route::get('/{category_slug}',                          ServiceByCategoryComponent::class)->name('services_by_category');
 
 
 Route::middleware(['auth:sanctum', 'verified', 'isAdmin'])->prefix('/admin/')->as('admin.')->group(function () {
@@ -34,9 +36,9 @@ Route::middleware(['auth:sanctum', 'verified', 'isAdmin'])->prefix('/admin/')->a
 });
 
 Route::middleware(['auth:sanctum', 'verified', 'isServiceProvider'])->group(function () {
-    Route::get('/servicer-provider/adshboard',       ServiceProviderDashboardComponent::class)->name('servicer-provider.dashboard');
+    Route::get('/servicer-provider/adshboard',              ServiceProviderDashboardComponent::class)->name('servicer-provider.dashboard');
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
-    Route::get('/customer/adshboard',               CustomerDashboardComponent::class)->name('customer.dashboard');
+    Route::get('/customer/adshboard',                       CustomerDashboardComponent::class)->name('customer.dashboard');
 });
