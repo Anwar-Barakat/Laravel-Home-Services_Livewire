@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
 <link rel="icon" href="{{ asset('images/favicon/favicon.ico') }}" type="image/x-icon" />
 <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet" media="screen">
 <link href="{{ asset('assets/css/chblue.css') }}" rel="stylesheet" media="screen">

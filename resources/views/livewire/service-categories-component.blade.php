@@ -31,13 +31,11 @@
                         @foreach ($serviceCategories as $serviceCategory)
                             <li>
                                 <div class="item-service-line">
-                                    <i class="fa">
-                                        <a href="{{ route('services_by_category', $serviceCategory->slug) }}">
-                                            <img class="icon-img"
-                                                src="{{ asset('images/categories/' . $serviceCategory->image) }}"
-                                                alt="{{ $serviceCategory->name }}">
-                                        </a>
-                                    </i>
+                                    <a href="{{ route('services_by_category', $serviceCategory->slug) }}">
+                                        <img class="icon-img"
+                                            src="{{ asset('images/categories/' . $serviceCategory->image) }}"
+                                            alt="{{ $serviceCategory->name }}">
+                                    </a>
                                     <h5>{{ $serviceCategory->name }}</h5>
                                 </div>
                             </li>

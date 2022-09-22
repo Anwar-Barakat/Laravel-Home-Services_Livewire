@@ -1,3 +1,5 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+
 <script type="text/javascript" src={{ asset('assets/js/nav/jquery.sticky.js') }}></script>
 <script type="text/javascript" src={{ asset('assets/js/totop/jquery.ui.totop.js') }}></script>
 <script type="text/javascript" src={{ asset('assets/js/accordion/accordion.js') }}></script>

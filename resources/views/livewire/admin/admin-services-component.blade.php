@@ -60,10 +60,10 @@
                                                     <td>{{ $service->created_at }}</td>
                                                     <td style="display: flex;justify-content: space-evenly;">
                                                         <a>
-                                                            <i class="fa fa-edit fa-2x text-success"></i>
+                                                            <i class="fa fa-edit text-success"></i>
                                                         </a>
                                                         <a href="#">
-                                                            <i class="fa fa-trash-alt fa-2x text-danger"></i>
+                                                            <i class="fa fa-trash-alt text-danger"></i>
                                                         </a>
                                                     </td>
                                                 </tr>
