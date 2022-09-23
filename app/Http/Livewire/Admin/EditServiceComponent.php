@@ -6,12 +6,14 @@ use App\Models\Service;
 use App\Models\ServiceCategory;
 use Carbon\Carbon;
 use Livewire\Component;
-use Illuminate\Support\Str;
 use Livewire\WithFileUploads;
+use Illuminate\Support\Str;
 
-class AddServiceComponent extends Component
+class EditServiceComponent extends Component
 {
     use WithFileUploads;
+
+    public $service_slug;
 
     public $name,
         $slug,
@@ -25,6 +27,26 @@ class AddServiceComponent extends Component
         $description,
         $inclusion,
         $exclusion;
+
+    public $newImage, $newThumbnail;
+
+    public function mount($service_slug)
+    {
+        $this->service_slug         = $service_slug;
+        $service                    = Service::where('slug', $service_slug)->first();
+        $this->name                 = $service->name;
+        $this->slug                 = $service->slug;
+        $this->tagline              = $service->tagline;
+        $this->service_category_id  = $service->service_category_id;
+        $this->price                = $service->price;
+        $this->discount             = $service->discount;
+        $this->discount_type        = $service->discount_type;
+        $this->thumbnail            = $service->thumbnail;
+        $this->image                = $service->image;
+        $this->description          = $service->description;
+        $this->inclusion            = $service->inclusion;
+        $this->exclusion            = $service->exclusion;
+    }
 
     public function generateSlug()
     {
@@ -41,15 +63,15 @@ class AddServiceComponent extends Component
             'price'                 => 'required|numeric',
             'discount'              => 'required|numeric',
             'discount_type'         => ['required', 'in:fixed,percent'],
-            'thumbnail'             => 'required|mimes:png,jpg,jpeg|image',
-            'image'                 => 'required|mimes:png,jpg,jpeg|image',
             'description'           => 'required|min:10',
             'inclusion'             => 'required|min:10',
             'exclusion'             => 'required|min:10',
+            'newThumbnail'          => 'mimes:png,jpg,jpeg|image',
+            'newImage'              => 'mimes:png,jpg,jpeg|image',
         ]);
     }
 
-    public function createNewService()
+    public function updateService()
     {
         $this->validate([
             'name'                  => 'required|min:3',
@@ -57,20 +79,32 @@ class AddServiceComponent extends Component
             'tagline'               => 'required|min:3',
             'service_category_id'   => 'required',
             'price'                 => 'required|numeric',
-            'thumbnail'             => 'required|mimes:png,jpg,jpeg|image',
-            'image'                 => 'required|mimes:png,jpg,jpeg|image',
             'description'           => 'required|min:10',
             'inclusion'             => 'required|min:10',
             'exclusion'             => 'required|min:10',
+            'newImage'              => 'mimes:png,jpg,jpeg|image',
         ]);
 
-        $thumbnailName  = Carbon::now()->timestamp . '.' . $this->thumbnail->extension();
-        $imageName      = Carbon::now()->timestamp . '.' . $this->image->extension();
+        $service                    = Service::where('slug', $this->service_slug)->first();
 
-        $this->thumbnail->storeAs('services/thumbnails', $thumbnailName);
-        $this->image->storeAs('services', $imageName);
+        if ($this->newThumbnail) {
+            unlink('images/services/thumbnails/' . $this->thumbnail);
+            $this->validate(['newThumbnail'          => 'mimes:png,jpg,jpeg|image']);
+            $thumbnailName      = Carbon::now()->timestamp . '.' . $this->newThumbnail->extension();
+            $this->newThumbnail->storeAs('services/thumbnails', $thumbnailName);
+        }
 
-        Service::create([
+        if ($this->newImage) {
+            unlink('images/services/' . $this->image);
+            $this->validate(['newImage'          => 'mimes:png,jpg,jpeg|image']);
+            $imageName      = Carbon::now()->timestamp . '.' . $this->newImage->extension();
+            $this->newImage->storeAs('images/services/', $imageName);
+        }
+
+
+
+
+        Service::where('slug', $this->service_slug)->update([
             'name'                  => $this->name,
             'slug'                  => $this->slug,
             'tagline'               => $this->tagline,
@@ -85,14 +119,15 @@ class AddServiceComponent extends Component
             'image'                 => $imageName,
         ]);
 
-        toastr()->success('Service Hsa Been Added Successfully');
 
-        $this->reset();
+        toastr()->success('Service Has Been Updated Successfully');
     }
+
+
 
     public function render()
     {
-        $categories = ServiceCategory::all();
-        return view('livewire.admin.add-service-component', ['categories' => $categories])->layout('layouts.master');
+        $categories     = ServiceCategory::all();
+        return view('livewire.admin.edit-service-component', ['categories' => $categories])->layout('layouts.master');
     }
 }

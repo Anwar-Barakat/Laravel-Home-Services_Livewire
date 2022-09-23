@@ -59,7 +59,7 @@
                                                     <td>{{ $service->category->name }}</td>
                                                     <td>{{ $service->created_at }}</td>
                                                     <td style="display: flex;justify-content: space-evenly;">
-                                                        <a>
+                                                        <a href="{{ route('admin.edit.service', $service->slug) }}">
                                                             <i class="fa fa-edit text-success"></i>
                                                         </a>
                                                         <a href="#">

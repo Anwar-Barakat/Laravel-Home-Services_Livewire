@@ -6,6 +6,7 @@ use App\Http\Livewire\Admin\AdminDashboardComponent;
 use App\Http\Livewire\Admin\AdminServicesByCategoryComponent;
 use App\Http\Livewire\Admin\AdminServicesComponent;
 use App\Http\Livewire\Admin\EditServiceCategoryComponent;
+use App\Http\Livewire\Admin\EditServiceComponent;
 use App\Http\Livewire\Admin\ServiceCategoryComponent;
 use App\Http\Livewire\Customer\CustomerDashboardComponent;
 use App\Http\Livewire\HomeComponent;
@@ -39,6 +40,7 @@ Route::middleware(['auth:sanctum', 'verified', 'isAdmin'])->prefix('/admin/')->a
     Route::get('services',                                  AdminServicesComponent::class)->name('services.index');
     Route::get('{category_slug}/services',                  AdminServicesByCategoryComponent::class)->name('services_by_category');
     Route::get('service/create',                            AddServiceComponent::class)->name('add.service');
+    Route::get('service/{service_slug}/edit',               EditServiceComponent::class)->name('edit.service');
 });
 
 Route::middleware(['auth:sanctum', 'verified', 'isServiceProvider'])->group(function () {
