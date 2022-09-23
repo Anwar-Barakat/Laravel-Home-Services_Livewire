@@ -27,7 +27,7 @@
                                             <h4>All Service Categories</h4>
                                         </div>
                                         <div class="col-md-6">
-                                            <a href="" class="btn btn-info pull-right">
+                                            <a href="{{ route('admin.add.service') }}" class="btn btn-info pull-right">
                                                 Add New
                                             </a>
                                         </div>

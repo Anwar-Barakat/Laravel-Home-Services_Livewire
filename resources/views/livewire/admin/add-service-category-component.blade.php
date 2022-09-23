@@ -80,8 +80,9 @@
                                         <div class="form-group">
                                             <label for="name" class="control-label col-sm-3">&nbsp;</label>
                                             <div class="col-sm-9">
-                                                <button class="btn btn-success" type="submit"><i
-                                                        class="fab fa-plus"></i> Add</button>
+                                                <button class="btn btn-success" type="submit">
+                                                    <i class="fas fa-plus"></i> &nbsp; Add
+                                                </button>
                                             </div>
                                         </div>
                                     </form>

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Livewire\Admin\AddServiceCategoryComponent;
+use App\Http\Livewire\Admin\AddServiceComponent;
 use App\Http\Livewire\Admin\AdminDashboardComponent;
 use App\Http\Livewire\Admin\AdminServicesByCategoryComponent;
 use App\Http\Livewire\Admin\AdminServicesComponent;
@@ -33,10 +34,11 @@ Route::get('/{category_slug}',                          ServiceByCategoryCompone
 Route::middleware(['auth:sanctum', 'verified', 'isAdmin'])->prefix('/admin/')->as('admin.')->group(function () {
     Route::get('adshboard',                                 AdminDashboardComponent::class)->name('dashboard');
     Route::get('service-categories',                        ServiceCategoryComponent::class)->name('service.categories');
-    Route::get('service-categories-create',                 AddServiceCategoryComponent::class)->name('add.service.categories');
+    Route::get('service-categories/create',                 AddServiceCategoryComponent::class)->name('add.service.categories');
     Route::get('service-categories/{category_id}/edit',     EditServiceCategoryComponent::class)->name('edit.service.categories');
     Route::get('services',                                  AdminServicesComponent::class)->name('services.index');
     Route::get('{category_slug}/services',                  AdminServicesByCategoryComponent::class)->name('services_by_category');
+    Route::get('service/create',                            AddServiceComponent::class)->name('add.service');
 });
 
 Route::middleware(['auth:sanctum', 'verified', 'isServiceProvider'])->group(function () {
