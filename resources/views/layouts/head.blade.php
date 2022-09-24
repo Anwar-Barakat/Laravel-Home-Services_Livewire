@@ -7,9 +7,5 @@
 <link href="{{ asset('assets/css/dtb/jquery.dataTables.min.css') }}" rel="stylesheet" media="screen">
 <link href="{{ asset('assets/css/select2.min.css') }}" rel="stylesheet" media="screen">
 <link href="{{ asset('assets/css/toastr.min.css') }}" rel="stylesheet" media="screen">
-<script type="text/javascript" src="{{ asset('assets/js/jquery.js') }}"></script>
-<script type="text/javascript" src="{{ asset('assets/js/jquery-ui.1.10.4.min.js') }}"></script>
-<script type="text/javascript" src="{{ asset('assets/js/toastr.min.js') }}"></script>
-<script type="text/javascript" src="{{ asset('assets/js/modernizr.js') }}"></script>
 
 <link rel="stylesheet" href="{{ asset('assets/css/custom/custom.css') }}">

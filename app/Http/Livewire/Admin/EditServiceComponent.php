@@ -115,8 +115,8 @@ class EditServiceComponent extends Component
             'discount'              => $this->discount ?? null,
             'discount_type'         => $this->discount_type ?? null,
             'description'           => $this->description,
-            'inclusion'             => str_replace('\n', ' ', trim($this->inclusion)),
-            'exclusion'             => str_replace('\n', ' ', trim($this->exclusion)),
+            'inclusion'             => $this->inclusion,
+            'exclusion'             => $this->exclusion,
             'thumbnail'             => $thumbnailName,
             'image'                 => $imageName,
         ]);
