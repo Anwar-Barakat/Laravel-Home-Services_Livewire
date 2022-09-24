@@ -30,6 +30,8 @@ class EditServiceComponent extends Component
 
     public $newImage, $newThumbnail;
 
+    public $featured;
+
     public function mount($service_slug)
     {
         $this->service_slug         = $service_slug;
@@ -44,8 +46,9 @@ class EditServiceComponent extends Component
         $this->thumbnail            = $service->thumbnail;
         $this->image                = $service->image;
         $this->description          = $service->description;
-        $this->inclusion            = str_replace('|', '\n', trim($this->inclusion));
-        $this->exclusion            = str_replace('|', '\n', trim($this->exclusion));
+        $this->inclusion            = str_replace('|', '\n', trim($service->inclusion));
+        $this->exclusion            = str_replace('|', '\n', trim($service->exclusion));
+        $this->featured             = $service->featured;
     }
 
     public function generateSlug()
@@ -66,9 +69,14 @@ class EditServiceComponent extends Component
             'description'           => 'required|min:10',
             'inclusion'             => 'required|min:10',
             'exclusion'             => 'required|min:10',
-            'newThumbnail'          => 'mimes:png,jpg,jpeg|image',
-            'newImage'              => 'mimes:png,jpg,jpeg|image',
+
+
         ]);
+        if ($this->newImage)
+            $this->validateOnly($fields, ['newImage'              => 'mimes:png,jpg,jpeg|image']);
+
+        if ($this->newThumbnail)
+            $this->validateOnly($fields, ['newThumbnail'          => 'mimes:png,jpg,jpeg|image',]);
     }
 
     public function updateService()
@@ -82,10 +90,17 @@ class EditServiceComponent extends Component
             'description'           => 'required|min:10',
             'inclusion'             => 'required|min:10',
             'exclusion'             => 'required|min:10',
-            'newImage'              => 'mimes:png,jpg,jpeg|image',
         ]);
+        if ($this->newImage)
+            $this->validate(['newImage'              => 'mimes:png,jpg,jpeg|image']);
 
-        $service                    = Service::where('slug', $this->service_slug)->first();
+        if ($this->newThumbnail)
+            $this->validate(['newThumbnail'          => 'mimes:png,jpg,jpeg|image',]);
+
+        $service        = Service::where('slug', $this->service_slug)->first();
+
+        $service        = Service::where('slug', $this->service_slug)->first();
+
 
         if ($this->newThumbnail) {
             if ($this->thumbnail)
@@ -103,10 +118,7 @@ class EditServiceComponent extends Component
             $this->newImage->storeAs('images/services/', $imageName);
         }
 
-
-
-
-        Service::where('slug', $this->service_slug)->update([
+        $service->update([
             'name'                  => $this->name,
             'slug'                  => $this->slug,
             'tagline'               => $this->tagline,
@@ -117,9 +129,12 @@ class EditServiceComponent extends Component
             'description'           => $this->description,
             'inclusion'             => $this->inclusion,
             'exclusion'             => $this->exclusion,
-            'thumbnail'             => $thumbnailName,
-            'image'                 => $imageName,
+            'featured'              => $this->featured,
+            'thumbnail'             => $thumbnailName ?? $this->thumbnail,
+            'image'                 => $imageName ?? $this->image,
         ]);
+
+
 
 
         toastr()->success('Service Has Been Updated Successfully');

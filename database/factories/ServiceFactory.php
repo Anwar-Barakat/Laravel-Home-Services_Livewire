@@ -31,6 +31,7 @@ class ServiceFactory extends Factory
             'description'           => $this->faker->text(200),
             'inclusion'             => $this->faker->text(20) . '|' . $this->faker->text(20) . '|' . $this->faker->text(20) . '|' . $this->faker->text(20) . '|' . $this->faker->text(20),
             'exclusion'             => $this->faker->text(20) . '|' . $this->faker->text(20) . '|' . $this->faker->text(20) . '|' . $this->faker->text(20) . '|' . $this->faker->text(20),
+            'featured'              => random_int(0, 1)
         ];
     }
 }

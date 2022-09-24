@@ -140,6 +140,20 @@
                                                 @enderror
                                             </div>
                                         </div>
+
+                                        <div class="form-group">
+                                            <label for="featured" class="control-label col-sm-3">Featured</label>
+                                            <div class="col-sm-9">
+                                                <select id="featured" wire:model="featured" class="form-control">
+                                                    <option value="" selected>Select..</option>
+                                                    <option value="0">No</option>
+                                                    <option value="1">Yes</option>
+                                                </select>
+                                                @error('featured')
+                                                    <span class="error">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+                                        </div>
                                         <div class="form-group">
                                             <label for="description"
                                                 class="control-label col-sm-3">Description</label>

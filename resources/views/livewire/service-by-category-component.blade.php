@@ -49,7 +49,7 @@
                                 </a>
                             </div>
                         @empty
-                            <h3 class="text-center">No Result Found !!</h3>
+                            <h2 class="text-center d-block" style="position: initial">No Result Found !!</h2>
                         @endforelse
                     </div>
                 </div>

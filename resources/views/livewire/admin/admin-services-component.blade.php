@@ -41,6 +41,7 @@
                                             <td>name</td>
                                             <td>price</td>
                                             <td>status</td>
+                                            <td>Featured</td>
                                             <td>category</td>
                                             <td>created at</td>
                                             <td>Actions</td>
@@ -56,6 +57,7 @@
                                                     <td>{{ $service->name }}</td>
                                                     <td>{{ $service->price }}</td>
                                                     <td>{{ $service->status == 1 ? 'Active' : 'Inactive' }}</td>
+                                                    <td>{{ $service->featured == '1' ? 'Yes' : 'No' }}</td>
                                                     <td>{{ $service->category->name }}</td>
                                                     <td>{{ $service->created_at }}</td>
                                                     <td style="display: flex;justify-content: space-evenly;">

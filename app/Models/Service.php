@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -23,7 +24,13 @@ class Service extends Model
         'inclusion',
         'exclusion',
         'status',
+        'featured',
     ];
+
+    public function getCreatedAtAttribute($value)
+    {
+        return Carbon::parse($this->attributes['created_at'])->format('Y-m-d');
+    }
 
     public function category()
     {

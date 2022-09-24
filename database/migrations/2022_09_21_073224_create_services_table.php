@@ -28,6 +28,7 @@ class CreateServicesTable extends Migration
             $table->longText('inclusion')->nullable();
             $table->longText('exclusion')->nullable();
             $table->boolean('status')->default(true);
+            $table->boolean('featured')->default(false);
             $table->timestamps();
         });
     }

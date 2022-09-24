@@ -4,8 +4,8 @@
         <input id="mobile-button" type="checkbox">
 
         <ul class="collapse">
-            <li class="title">
-                <a href="https://postimages.org/" target="_blank"><img style="max-width: 40px"
+            <li class="title d-flex align-items-center">
+                <a href="{{ route('home') }}" target="_blank"><img style="max-width: 40px"
                         src="https://i.postimg.cc/QCyRWB1P/IMG-20220826-172957-743-removebg-preview.png"
                         alt="IMG-20220826-172957-743-removebg-preview" /></a>
             </li>
