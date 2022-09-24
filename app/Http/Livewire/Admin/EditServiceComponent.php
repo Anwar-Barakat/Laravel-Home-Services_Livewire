@@ -44,8 +44,8 @@ class EditServiceComponent extends Component
         $this->thumbnail            = $service->thumbnail;
         $this->image                = $service->image;
         $this->description          = $service->description;
-        $this->inclusion            = $service->inclusion;
-        $this->exclusion            = $service->exclusion;
+        $this->inclusion            = str_replace('|', '\n', trim($this->inclusion));
+        $this->exclusion            = str_replace('|', '\n', trim($this->exclusion));
     }
 
     public function generateSlug()
@@ -88,14 +88,16 @@ class EditServiceComponent extends Component
         $service                    = Service::where('slug', $this->service_slug)->first();
 
         if ($this->newThumbnail) {
-            unlink('images/services/thumbnails/' . $this->thumbnail);
+            if ($this->thumbnail)
+                unlink('images/services/thumbnails/' . $this->thumbnail);
             $this->validate(['newThumbnail'          => 'mimes:png,jpg,jpeg|image']);
             $thumbnailName      = Carbon::now()->timestamp . '.' . $this->newThumbnail->extension();
             $this->newThumbnail->storeAs('services/thumbnails', $thumbnailName);
         }
 
         if ($this->newImage) {
-            unlink('images/services/' . $this->image);
+            if ($this->image)
+                unlink('images/services/' . $this->image);
             $this->validate(['newImage'          => 'mimes:png,jpg,jpeg|image']);
             $imageName      = Carbon::now()->timestamp . '.' . $this->newImage->extension();
             $this->newImage->storeAs('images/services/', $imageName);

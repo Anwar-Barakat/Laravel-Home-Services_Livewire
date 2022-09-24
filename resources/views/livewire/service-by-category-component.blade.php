@@ -31,7 +31,7 @@
                         @forelse ($serviceCategory->services as $service)
                             <div class="col-xs-12 col-sm-6 col-md-4 nature hsgrids"
                                 style="padding-right: 5px;padding-left: 5px;">
-                                <a class="g-list" href="service-details/ac-wet-servicing.html">
+                                <a class="g-list" href="{{ route('service-detail', $service->slug) }}">
                                     <div class="img-hover">
                                         <img src="{{ asset('images/services/thumbnails/' . $service->thumbnail) }}"
                                             alt="{{ $service->name }}" class="img-responsive" width="100%">
@@ -40,7 +40,7 @@
                                         <h3>{{ $service->name }}</h3>
                                         <hr class="separator">
                                         <p>{{ $service->tagline }}</p>
-                                        <div class="content-btn"><a href="service-details/ac-wet-servicing.html"
+                                        <div class="content-btn"><a href="{{ route('service-detail', $service->slug) }}"
                                                 class="btn btn-primary">Book Now</a></div>
                                         <div class="price">
                                             <span>&#36;</span><b>From</b>{{ number_format($service->price, 2) }}

@@ -13,7 +13,7 @@ class ServiceCategoryComponent extends Component
     public function deleteServiceCategory($category_id)
     {
         $serviceCategory = ServiceCategory::findOrFail($category_id);
-        if ($serviceCategory)
+        if ($serviceCategory->image)
             unlink('images/categories/' . $serviceCategory->image);
 
         $serviceCategory->delete();

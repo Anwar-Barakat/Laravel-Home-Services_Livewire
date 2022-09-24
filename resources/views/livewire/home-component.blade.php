@@ -308,7 +308,7 @@
             </div>
             <div id="boxes-carousel">
                 <div>
-                    <a class="g-list" href="service-details/ac-wet-servicing.html">
+                    <a class="g-list" href="-servicing.html">
                         <div class="img-hover">
                             <img src="{{ asset('images/services/thumbnails/thumbnail.jpg') }}" alt=""
                                 class="img-responsive">

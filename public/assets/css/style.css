@@ -323,13 +323,15 @@ hr.tall {
 }
 .list-styles li {
     line-height: 40px;
+    display: flex;
+    align-items: center;
 }
 .list-styles li a,
 .list-styles li {
     font-size: 0.82rem;
     color: #777;
 }
-.list-styles li i {
+.list-styles li .icon {
     border-radius: 50%;
     width: 22px;
     height: 22px;

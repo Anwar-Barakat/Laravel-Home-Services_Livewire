@@ -11,8 +11,11 @@ class AdminServicesComponent extends Component
     public function deleteService($serviceId)
     {
         $service = Service::findOrFail($serviceId);
-        unlink('images/services/thumbnails/' . $service->thumbnail);
-        unlink('images/services/' . $service->image);
+        if (isset($service->thumbnail))
+            unlink('images/services/thumbnails/' . $service->thumbnail);
+
+        if (isset($service->image))
+            unlink('images/services/' . $service->image);
         $service->delete();
         toastr()->info('Service Has Been Deleted Successfully');
     }
