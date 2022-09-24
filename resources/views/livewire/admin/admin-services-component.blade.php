@@ -62,7 +62,9 @@
                                                         <a href="{{ route('admin.edit.service', $service->slug) }}">
                                                             <i class="fa fa-edit text-success"></i>
                                                         </a>
-                                                        <a href="#">
+                                                        <a href="#"
+                                                            wire:click.prevent="deleteService({{ $service->id }})"
+                                                            onclick="confirm('Are You Sure, You Want to Delete This Service') || event.stopImmediatePropagation()">
                                                             <i class="fa fa-trash-alt text-danger"></i>
                                                         </a>
                                                     </td>

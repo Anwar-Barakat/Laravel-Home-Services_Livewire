@@ -53,7 +53,7 @@
                                                     <td>{{ $serviceCategory->slug }}</td>
                                                     <td style="display: flex;justify-content: space-evenly;">
                                                         <a
-                                                            href="{{ route('admin.services_by_category', $serviceCategory->slug) }}">
+                                                            href="{{ route('admin.services_by_category', $serviceCategory->slug) }}" title="Display Category's Services">
                                                             <i class="fa fa-eye text-warning"></i>
                                                         </a>
                                                         <a
