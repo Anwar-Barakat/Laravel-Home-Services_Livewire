@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use App\Models\Service;
 use App\Models\ServiceCategory;
+use App\Models\Slider;
 use Livewire\Component;
 
 class HomeComponent extends Component
@@ -16,11 +17,14 @@ class HomeComponent extends Component
         $sid                = collect(ServiceCategory::inRandomOrder()->take(5)->get()->modelKeys());
         $aservices          = Service::whereIn('service_category_id', $sid)->inRandomOrder()->take(8)->get();
 
+        $slides             = Slider::where('status', 1)->get();
+
         return view('livewire.home-component', [
             'categories'            => $categories,
             'featuredServices'      => $featuredServices,
             'serviceCategories'     => $serviceCategories,
-            'aservices'             => $aservices
+            'aservices'             => $aservices,
+            'slides'                => $slides
         ])->layout('layouts.master');
     }
 }

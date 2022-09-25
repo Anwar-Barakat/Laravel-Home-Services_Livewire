@@ -2,18 +2,28 @@
     <section class="tp-banner-container">
         <div class="tp-banner">
             <ul>
-                <li data-transition="slidevertical" data-slotamount="1" data-masterspeed="1000" data-saveperformance="off"
-                    data-title="Slide">
-                    <img src="assets/img/slide/1.jpg" alt="fullslide1" data-bgposition="center center" data-kenburns="on"
-                        data-duration="6000" data-ease="Linear.easeNone" data-bgfit="130" data-bgfitend="100"
-                        data-bgpositionend="right center">
-                </li>
-                <li data-transition="slidehorizontal" data-slotamount="1" data-masterspeed="1000"
-                    data-saveperformance="off" data-title="Slide">
-                    <img src="assets/img/slide/2.jpg" alt="fullslide1" data-bgposition="top center" data-kenburns="on"
-                        data-duration="6000" data-ease="Linear.easeNone" data-bgfit="130" data-bgfitend="100"
-                        data-bgpositionend="right center">
-                </li>
+                @forelse ($slides as $slide)
+                    <li data-transition="slidevertical" data-slotamount="1" data-masterspeed="1000"
+                        data-saveperformance="off" data-title="Slide">
+                        <img src="{{ asset('images/slider/' . $slide->image) }}" alt="{{ $slide->title }}"
+                            data-bgposition="center center" data-kenburns="on" data-duration="6000"
+                            data-ease="Linear.easeNone" data-bgfit="130" data-bgfitend="100"
+                            data-bgpositionend="right center">
+                    </li>
+                @empty
+                    <li data-transition="slidevertical" data-slotamount="1" data-masterspeed="1000"
+                        data-saveperformance="off" data-title="Slide">
+                        <img src="assets/img/slide/1.jpg" alt="fullslide1" data-bgposition="center center"
+                            data-kenburns="on" data-duration="6000" data-ease="Linear.easeNone" data-bgfit="130"
+                            data-bgfitend="100" data-bgpositionend="right center">
+                    </li>
+                    <li data-transition="slidehorizontal" data-slotamount="1" data-masterspeed="1000"
+                        data-saveperformance="off" data-title="Slide">
+                        <img src="assets/img/slide/2.jpg" alt="fullslide1" data-bgposition="top center"
+                            data-kenburns="on" data-duration="6000" data-ease="Linear.easeNone" data-bgfit="130"
+                            data-bgfitend="100" data-bgpositionend="right center">
+                    </li>
+                @endforelse
             </ul>
             <div class="tp-bannertimer"></div>
         </div>
@@ -78,7 +88,8 @@
                                         <h3>{{ $service->name }}</h3>
                                         <hr class="separator">
                                         <p>{{ $service->name }}</p>
-                                        <div class="content-btn"><a href="{{ route('service-detail', $service->slug) }}"
+                                        <div class="content-btn"><a
+                                                href="{{ route('service-detail', $service->slug) }}"
                                                 class="btn btn-primary">Book Now</a></div>
                                         <div class="price"><span>&#36;</span><b>From</b>{{ $service->price }}</div>
                                     </div>
