@@ -115,7 +115,7 @@ class EditServiceComponent extends Component
                 unlink('images/services/' . $this->image);
             $this->validate(['newImage'          => 'mimes:png,jpg,jpeg|image']);
             $imageName      = Carbon::now()->timestamp . '.' . $this->newImage->extension();
-            $this->newImage->storeAs('images/services/', $imageName);
+            $this->newImage->storeAs('services/', $imageName);
         }
 
         $service->update([
